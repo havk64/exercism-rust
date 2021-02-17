@@ -11,8 +11,7 @@ pub fn raindrops(n: u32) -> String {
         str.push_str("Plong");
     }
     if str == "".to_string() {
-        let ntostr = n.to_string();
-        str.push_str(&ntostr);
+        str.push_str(&n.to_string());
     }
     str
 }
