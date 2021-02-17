@@ -1,3 +1,18 @@
 pub fn raindrops(n: u32) -> String {
-    unimplemented!("what sound does Raindrop #{} make?", n)
+    let mut str = String::new();
+
+    if n % 3 == 0 {
+        str.push_str("Pling");
+    }
+    if n % 5 == 0 {
+        str.push_str("Plang");
+    }
+    if n % 7 == 0 {
+        str.push_str("Plong");
+    }
+    if str == "".to_string() {
+        let ntostr = n.to_string();
+        str.push_str(&ntostr);
+    }
+    str
 }
