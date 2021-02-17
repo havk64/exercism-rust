@@ -1,13 +1,14 @@
 pub fn raindrops(n: u32) -> String {
     let mut s = String::new();
+    let is_factor = |factor| n % factor == 0;
 
-    if n % 3 == 0 {
+    if is_factor(3) {
         s.push_str("Pling");
     }
-    if n % 5 == 0 {
+    if is_factor(5) {
         s.push_str("Plang");
     }
-    if n % 7 == 0 {
+    if is_factor(7) {
         s.push_str("Plong");
     }
     if s.is_empty() {
