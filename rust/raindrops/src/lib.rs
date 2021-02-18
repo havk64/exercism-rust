@@ -1,18 +1,23 @@
+const OPTIONS: [(u32, &'static str); 3] = [
+    (3, "Pling"),
+    (5, "Plang"),
+    (7, "Plong")
+];
+
 pub fn raindrops(n: u32) -> String {
     let mut s = String::new();
-    let is_factor = |factor| n % factor == 0;
+    let mut check_factor = |index: &(u32, &str)| {
+        if n % index.0 == 0 {
+            s.push_str(index.1)
+        }
+    };
 
-    if is_factor(3) {
-        s.push_str("Pling");
+    for item in OPTIONS.iter() {
+        check_factor(item)
     }
-    if is_factor(5) {
-        s.push_str("Plang");
-    }
-    if is_factor(7) {
-        s.push_str("Plong");
-    }
+
     if s.is_empty() {
-        s.push_str(&n.to_string());
+        s = n.to_string()
     }
     s
 }
