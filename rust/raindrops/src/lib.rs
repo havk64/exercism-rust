@@ -6,14 +6,9 @@ const OPTIONS: [(u32, &'static str); 3] = [
 
 pub fn raindrops(n: u32) -> String {
     let mut s = String::new();
-    let mut check_factor = |index: &(u32, &str)| {
-        if n % index.0 == 0 {
-            s.push_str(index.1)
-        }
-    };
 
     for item in OPTIONS.iter() {
-        check_factor(item)
+        if n % item.0 == 0 { s.push_str(item.1) }
     }
 
     if s.is_empty() {
