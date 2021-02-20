@@ -1,21 +1,9 @@
+fn  is_prime(n: u32) -> bool {
+    !(2..n - 1).any(|i| n % i == 0)
+}
 pub fn nth(n: u32) -> u32 {
-    let mut primes: Vec<u32> = Vec::new();
-    let mut is_prime = true;
-
-    for x in 2..u32::MAX  {
-        for y in primes[..].iter() {
-            if x % y == 0 {
-                is_prime = false;
-                break;
-            }
-        }
-        if is_prime {
-            primes.push(x);
-        }
-        if primes.len() == (n + 1) as usize {
-            return x;
-        }
-        is_prime = true;
+    match n {
+        0 => 0,
+        n => (1..).filter(|c| -> bool {is_prime(*c)}).nth((n + 1) as usize).unwrap(),
     }
-    0
 }
