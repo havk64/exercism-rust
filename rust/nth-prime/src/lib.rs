@@ -1,12 +1,15 @@
-fn is_prime(n: u32) -> bool {
-    !(2..n - 1).any(|i| n % i == 0)
-}
 pub fn nth(n: u32) -> u32 {
-    match n {
-        0 => 0,
-        n => (1..)
-            .filter(|c| -> bool { is_prime(*c) })
-            .nth((n + 1) as usize)
-            .unwrap(),
-    }
+    let mut primes: Vec<u32> = Vec::new();
+
+    (2..)
+        .filter(|c| -> bool {
+            if !primes.iter().any(|i| c % i == 0) {
+                primes.push(*c);
+                true
+            } else {
+                false
+            }
+        })
+        .nth(n  as usize)
+        .unwrap()
 }
