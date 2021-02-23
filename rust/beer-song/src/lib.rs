@@ -12,28 +12,42 @@ pub fn verse(n: u32) -> String {
     let tail = "on the wall";
     match n {
         0 => {
-            let mut answer = format!("{} {}, {}.\nGo to the store and buy some more, ", &beer_count(0), tail, &beer_count(0).to_lowercase());
+            let mut answer = format!(
+                "{} {}, {}.\nGo to the store and buy some more, ",
+                beer_count(0),
+                tail,
+                beer_count(0).to_lowercase()
+            );
             answer.push_str(&format!("{} {}.\n", beer_count(99), tail));
             answer
-        },
+        }
         1 => {
-            let mut answer = format!("{} {}, {}.\nTake it down and pass it around, ", beer_count(1), tail, &beer_count(1).to_lowercase());
-            answer.push_str(&format!("{} {}.\n", &beer_count(0).to_lowercase(), tail));
+            let mut answer = format!(
+                "{} {}, {}.\nTake it down and pass it around, ",
+                beer_count(1),
+                tail,
+                beer_count(1).to_lowercase()
+            );
+            answer.push_str(&format!("{} {}.\n", beer_count(0).to_lowercase(), tail));
             answer
-        },
+        }
         n => {
-            let mut answer = format!("{} {}, {}.\nTake one down and pass it around, ", beer_count(n), tail, &beer_count(n).to_lowercase());
-            answer.push_str(&format!("{} {}.\n", &beer_count(n - 1).to_lowercase(), tail));
+            let mut answer = format!(
+                "{} {}, {}.\nTake one down and pass it around, ",
+                beer_count(n),
+                tail,
+                beer_count(n).to_lowercase()
+            );
+            answer.push_str(&format!("{} {}.\n", beer_count(n - 1).to_lowercase(), tail));
             answer
-        },
+        }
     }
 }
 
 pub fn sing(start: u32, end: u32) -> String {
     let mut v: String = String::new();
-    for n in (end..(start+1)).rev() {
-        let verse = verse(n);
-        v.push_str(&verse);
+    for n in (end..(start + 1)).rev() {
+        v.push_str(verse(n).as_ref());
         if n != end {
             v.push('\n');
         }
