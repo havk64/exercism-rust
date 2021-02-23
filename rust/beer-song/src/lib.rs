@@ -2,7 +2,7 @@ fn beer_count(n: u32) -> String {
     let middle = "of beer";
 
     match n {
-        0 => format!("No more bottles {} ", middle),
+        0 => format!("No more bottles {}", middle),
         1 => format!("1 bottle {}", middle),
         n => format!("{} bottles {}", n, middle),
     }
@@ -37,12 +37,8 @@ pub fn verse(n: u32) -> String {
 }
 
 pub fn sing(start: u32, end: u32) -> String {
-    let mut v: String = String::new();
-    for n in (end..(start + 1)).rev() {
-        v.push_str(verse(n).as_ref());
-        if n != end {
-            v.push('\n');
-        }
-    }
-    v
+    (end..(start + 1)).rev()
+        .map(|n|verse(n))
+        .collect::<Vec<_>>()
+        .join("\n")
 }
