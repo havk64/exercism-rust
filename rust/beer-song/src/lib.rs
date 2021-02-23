@@ -40,6 +40,6 @@ pub fn sing(start: u32, end: u32) -> String {
     (end..(start + 1))
         .rev()
         .map(|n| verse(n))
-        .collect::<Vec<_>>()
+        .collect::<Vec<String>>()
         .join("\n")
 }
