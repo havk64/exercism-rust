@@ -1,13 +1,6 @@
 pub fn square(s: u32) -> u64 {
-    let mut acc = 1;
     match s {
-        1 => s as u64,
-        2..=64 => {
-            for _ in 1..s {
-                acc *= 2
-            }
-            acc
-        },
+        1..=64 => 1u64 << (s - 1),
         _ => panic!("Square must be between 1 and 64"),
     }
 }
