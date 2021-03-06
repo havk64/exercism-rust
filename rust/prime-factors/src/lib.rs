@@ -1,5 +1,5 @@
 fn is_prime(c: &u64, primes: &mut Vec<u64>) -> bool {
-    if !primes.iter().any(|i|c % i == 0) {
+    if !primes.iter().any(|i| c % i == 0) {
         primes.push(*c);
         false
     } else {
@@ -11,7 +11,8 @@ pub fn factors(n: u64) -> Vec<u64> {
     let mut result = Vec::new();
     let mut x = n;
 
-    let _ = (2..x).filter(|c| is_prime(c, &mut primes))
+    let _ = (2..x)
+        .filter(|c| is_prime(c, &mut primes))
         .collect::<Vec<_>>();
     while x > 0 {
         for p in primes.iter() {
@@ -21,6 +22,6 @@ pub fn factors(n: u64) -> Vec<u64> {
                 break;
             }
         }
-    };
+    }
     result
 }
