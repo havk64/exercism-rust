@@ -14,7 +14,7 @@ pub fn factors(n: u64) -> Vec<u64> {
     let _ = (2..x)
         .filter(|c| is_prime(c, &mut primes))
         .collect::<Vec<_>>();
-    while x > 0 {
+    while x > 1 {
         for p in primes.iter() {
             if x % p == 0 {
                 x /= p;
