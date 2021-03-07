@@ -1,14 +1,13 @@
-pub fn factors(n: u64) -> Vec<u64> {
+pub fn factors(mut n: u64) -> Vec<u64> {
     let mut result = Vec::new();
-    let mut x  = n;
+    let mut c  = 2..;
 
-    while x > 1 {
-        for p in 2..n {
-            if x % p == 0 {
-                x /= p;
-                result.push(p);
-                break;
-            }
+    while n > 1 {
+        let c = c.next().unwrap();
+
+        while n % c == 0 {
+            n /= c;
+            result.push(c);
         }
     }
     result
