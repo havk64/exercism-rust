@@ -14,9 +14,9 @@ pub fn verse(n: u32) -> String {
         0 => {
             let mut answer = format!(
                 "{} {}, {}.\nGo to the store and buy some more, ",
-                beer_count(0),
+                beer_count(n),
                 tail,
-                beer_count(0).to_lowercase()
+                beer_count(n).to_lowercase()
             );
             answer.push_str(&format!("{} {}.\n", beer_count(99), tail));
             answer
