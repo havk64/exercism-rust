@@ -1,3 +1,4 @@
+use std::collections::BTreeSet;
 #[derive(Debug)]
 pub struct HighScores<'a> {
     scores: &'a [u32]
@@ -29,6 +30,8 @@ impl<'a> HighScores<'a> {
     }
 
     pub fn personal_top_three(&self) -> Vec<u32> {
-        unimplemented!("Return 3 highest scores")
+        let sorted: BTreeSet<u32> = self.scores.into_iter().collect();
+
+        sorted.range((self.scores.len() - 3)..self.scores.len()).collect()
     }
 }
