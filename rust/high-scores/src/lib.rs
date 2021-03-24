@@ -14,19 +14,11 @@ impl<'a> HighScores<'a> {
     }
 
     pub fn latest(&self) -> Option<u32> {
-        if let Some(&x) = self.scores.last() {
-            Some(x)
-        } else {
-            None
-        }
+        self.scores.last().cloned()
     }
 
     pub fn personal_best(&self) -> Option<u32> {
-        if let Some(&x) = self.scores.iter().max() {
-            Some(x)
-        } else {
-            None
-        }
+        self.scores.iter().max().cloned()
     }
 
     pub fn personal_top_three(&self) -> Vec<u32> {
