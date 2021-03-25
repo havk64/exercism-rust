@@ -23,7 +23,7 @@ impl<'a> HighScores<'a> {
     pub fn personal_top_three(&self) -> Vec<u32> {
         let mut result = self.scores.to_vec();
 
-        result.sort_unstable_by(|a,b| b.cmp(a));
+        result.sort_by(|a,b| b.cmp(a));
         result.truncate(3);
 
         result
