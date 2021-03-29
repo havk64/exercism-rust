@@ -1,3 +1,14 @@
+use regex::RegexSet;
+
 pub fn reply(message: &str) -> &str {
-    unimplemented!("have Bob reply to the incoming message: {}", message)
+    let re = RegexSet::new(&[
+        r"?",
+        r"<upper>",
+        r"<yell question",
+        r"<empty>",
+    ]).unwrap();
+
+    match message {
+        _ => "Whatever.",
+    }
 }
