@@ -1,23 +1,8 @@
-use regex::RegexSet;
-
 pub fn reply(message: &str) -> &str {
-    let set = RegexSet::new(&[
-        r".+\??",
-        r"[[:upper:]]+",
-        r"[[:upper:]]+\??",
-        r"\W*",
-    ]).unwrap();
-    let matches = set.matches(message);
-
-    if matches.matched(0) {
-        "Sure."
-    } else if matches.matched(1) {
-        "Whoa, chill out!"
-    } else if matches.matched(2) {
-        "Calm down, I know what I'm doing!"
-    } else if matches.matched(3) {
-        "Fine. Be that way!"
-    } else {
-        "Whatever."
+    match message.trim() {
+        x if x.to_uppercase() == x && x.matches(char::is_alphabetic).count() > 0 => "Whoa, chill out!",
+        x if x.ends_with("?") => "Sure.",
+        x if x.is_empty() => "Fine. Be that way!",
+        _ => "Whatever."
     }
 }
