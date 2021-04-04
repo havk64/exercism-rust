@@ -1,9 +1,9 @@
 pub fn reply(message: &str) -> &str {
     match message.trim() {
-        x if x.to_uppercase() == x && x.contains(char::is_alphabetic) && x.ends_with("?") => "Calm down, I know what I'm doing!",
-        x if x.to_uppercase() == x && x.contains(char::is_alphabetic) => "Whoa, chill out!",
-        x if x.ends_with("?") => "Sure.",
-        x if x.is_empty() => "Fine. Be that way!",
+        msg if msg.to_uppercase() == msg && msg.contains(char::is_alphabetic) && msg.ends_with("?") => "Calm down, I know what I'm doing!",
+        msg if msg.to_uppercase() == msg && msg.contains(char::is_alphabetic) => "Whoa, chill out!",
+        msg if msg.ends_with("?") => "Sure.",
+        msg if msg.is_empty() => "Fine. Be that way!",
         _ => "Whatever."
     }
 }
