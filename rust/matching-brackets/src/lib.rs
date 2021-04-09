@@ -1,26 +1,14 @@
 pub fn brackets_are_balanced(string: &str) -> bool {
     let mut stack = vec![];
 
-    for c in string.chars() {
-        match c {
-            '{' | '[' | '(' => stack.push(c),
-            ')' => {
-                if stack.pop() != Some('(') {
-                    return false;
-                }
-            }
-            ']' => {
-                if stack.pop() != Some('[') {
-                    return false;
-                }
-            }
-            '}' => {
-                if stack.pop() != Some('{') {
-                    return false;
-                }
-            }
-            _ => (),
+    string.chars().all(|c| match c {
+        '{' | '[' | '(' => {
+            stack.push(c);
+            true
         }
-    }
-    stack.is_empty()
+        ')' => stack.pop() == Some('('),
+        ']' => stack.pop() == Some('['),
+        '}' => stack.pop() == Some('{'),
+        _ => true,
+    }) && stack.is_empty()
 }
