@@ -1,7 +1,7 @@
 use std::cell::Cell;
 use std::fmt::{Display,Formatter,Result};
 
-#[derive(Debug)]
+#[derive(Debug,PartialEq)]
 pub struct Clock {
     hours: i32,
     minutes: Cell<i32>,
@@ -22,6 +22,6 @@ impl Clock {
 
 impl Display for Clock {
     fn fmt(&self, f: &mut Formatter) -> Result {
-        write!(f, "{}:{}", self.hours, self.minutes.get())
+        write!(f, "{:02}:{:02}", self.hours, self.minutes.get())
     }
 }
